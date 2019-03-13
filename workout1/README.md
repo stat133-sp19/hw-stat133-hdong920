@@ -19,8 +19,9 @@ The Golden State Warriors are a strong team in the NBA already, but I wanted to 
 
 Author Information
 ==================
-Author: Harry Dong
-Email: hdong920@gmail.com
-School: UC Berkeley
-Class: Stat 133 (Section 109)
-Instructor: Gaston Sanchez
+
++ Author: Harry Dong
++ Email: hdong920@gmail.com
++ School: UC Berkeley
++ Class: Stat 133 (Section 109)
++ Instructor: Gaston Sanchez
