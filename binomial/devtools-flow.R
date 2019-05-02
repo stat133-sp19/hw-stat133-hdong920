@@ -1,6 +1,6 @@
 # Devtools workflow
 
-devtools::document()          # generate documentation
+devtools::document()          # create documentation
 devtools::check_man()         # check documentation
 devtools::test()              # run tests
 devtools::build_vignettes()   # build vignettes
