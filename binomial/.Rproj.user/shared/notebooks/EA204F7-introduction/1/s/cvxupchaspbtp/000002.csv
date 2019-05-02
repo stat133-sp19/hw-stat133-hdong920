@@ -1,0 +1,10 @@
+"0","library(binomial)"
+"2","Warning message:
+"
+"2","package ‘testthat’ was built under R version 3.5.3 
+"
+"0","knitr::opts_chunk$set("
+"0","  collapse = TRUE,"
+"0","  comment = ""#>"""
+"0",")"
+"0","library(binomial)"

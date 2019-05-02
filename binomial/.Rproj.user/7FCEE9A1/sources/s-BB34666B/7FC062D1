@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1556697069999.000,
+    "dirty" : false,
+    "encoding" : "ISO8859-1",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "7FC062D1",
+    "lastKnownWriteTime" : 1556748424,
+    "last_content_update" : 1556748424469,
+    "path" : "C:/Users/hdong/Desktop/stat133/workout3/workout3/binomial/vignettes/introduction.Rmd",
+    "project_path" : "vignettes/introduction.Rmd",
+    "properties" : {
+        "cursorPosition" : "19,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 11,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
