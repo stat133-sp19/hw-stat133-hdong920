@@ -1,0 +1,235 @@
+library(ggplot2)
+
+
+check_prob = function(prob) {
+  if (prob <= 1 && prob >= 0) {
+    return(TRUE)
+  }
+  stop("prob should be a number between 0 and 1")
+}
+
+
+
+check_trials = function(trials) {
+  if (trials %% 1 == 0 && trials >= 0) {
+    return(TRUE)
+  }
+  stop("invalid trials value")
+}
+
+
+
+check_success = function(success, trials) {
+  for (x in success) {
+    if (x < 0 || x > trials) {
+      stop("invalid success value")
+    }
+  }
+  return(TRUE)
+}
+
+
+
+
+aux_mean = function(trials, prob) {
+  return(trials * prob)
+}
+
+
+
+aux_variance = function(trials, prob) {
+  return(trials * prob * (1 - prob))
+}
+
+
+
+aux_mode = function(trials, prob) {
+  m = trials * prob + prob 
+  if (m %% 1 == 0) {
+    return(c(m, m - 1))
+  }
+  return (floor(m))
+}
+
+
+
+aux_skewness = function(trials, prob) {
+  s = (1 - (2 * prob)) / sqrt(aux_variance(trials, prob))
+  return(s)
+}
+
+
+
+aux_kurtosis = function(trials, prob) {
+  k = (1 - (6 * prob * (1 - prob))) / aux_variance(trials, prob)
+  return(k)
+}
+
+
+
+
+# ADD ROXYGEN
+
+bin_choose = function(n, k) {
+  if (k > n) {
+    stop("k cannot be greater than n")
+  }
+  return(factorial(n)/(factorial(k) * factorial(n - k)))
+}
+
+
+
+bin_probability = function(success, trials, prob) {
+  check_trials(trials)
+  check_prob(prob)
+  check_success(success, trials)
+  ways = bin_choose(trials, success)
+  return(ways * (prob ^ success) * (1 - prob) ^ (trials - success))
+}
+
+
+
+bin_distribution = function(trials, prob) {
+  success = 0:trials
+  dist = data.frame(success, probability = bin_probability(success, trials, prob))
+  class(dist) = c("bindis", "data.frame")
+  return(dist)
+}
+
+
+
+plot.bindis = function(x, ...) {
+  ggplot(x, aes(x = success, y = probability)) +
+    geom_bar(stat = 'identity')
+}
+
+
+
+bin_cumulative = function(trials, prob) {
+  dist = bin_distribution(trials, prob)
+  v = dist$probability
+  for (x in 2:length(dist$probability)) {
+    v[x] = v[x - 1] + v[x]
+  }
+  dist = data.frame(success = dist$success, probability = dist$probability, cumulative = v)
+  class(dist) = c("bincum", "data.frame")
+  return(dist)
+}
+
+
+
+plot.bincum = function(x, ...) {
+  ggplot(x, aes(x = success, y = cumulative)) +
+    geom_point() +
+    geom_line()
+  }
+
+
+
+bin_variable = function(trials, prob) {
+  check_trials(trials)
+  check_prob(prob)
+  variable = list(trials, prob)
+  names(variable) = c("trials", 'prob')
+  class(variable) = "binvar"
+  return(variable)
+}
+
+
+
+print.binvar = function(x, ...) {
+  print("Binomial variable")
+  print("", quote = FALSE)
+  print("Parameters", quote = FALSE)
+  print(paste0("- number of trials: ", x['trials']), quote = FALSE)
+  print(paste0("- prob of success : ", x['prob']), quote = FALSE)
+}
+
+
+
+summary.binvar = function(x, ...) {
+  trials = x[['trials']]
+  prob = x[['prob']]
+  lst  = list(
+    trials = trials, 
+    prob =prob,
+    mean = aux_mean(trials, prob),
+    variance = aux_variance(trials, prob),
+    mode = aux_mode(trials, prob),
+    skewness = aux_skewness(trials, prob),
+    kurtosis = aux_kurtosis(trials, prob)
+  )
+  class(lst) = "summary.binvar"
+  return(lst)
+}
+
+
+
+print.summary.binvar = function(x, ...) {
+  print("Summary Binomial")
+  print("", quote = FALSE)
+  print("Parameters", quote = FALSE)
+  print(paste0("- number of trials: ", x[['trials']]), quote = FALSE)
+  print(paste0("- prob of success : ", x[['prob']]), quote = FALSE)
+  print("", quote = FALSE)
+  print("Measures", quote = FALSE)
+  print(paste0("- mean            : ", x[['mean']]), quote = FALSE)
+  print(paste0("- variance        : ", x[['variance']]), quote = FALSE)
+  print(paste0("- mode            : ", x[['mode']]), quote = FALSE)
+  print(paste0("- skewness        : ", x[['skewness']]), quote = FALSE)
+  print(paste0("- kurtosis        : ", x[['kurtosis']]), quote = FALSE)
+}
+
+
+
+
+
+
+bin_mean = function(trials, prob) {
+  check_prob(prob)
+  check_trials(prob)
+  return(aux_mean(trials, prob))
+}
+
+
+
+bin_mean = function(trials, prob) {
+  check_prob(prob)
+  check_trials(prob)
+  return(aux_mean(trials, prob))
+}
+
+
+
+bin_variance = function(trials, prob) {
+  check_prob(prob)
+  check_trials(prob)
+  return(aux_variance(trials, prob))
+}
+
+
+
+bin_mode = function(trials, prob) {
+  check_prob(prob)
+  check_trials(prob)
+  return(aux_mode(trials, prob))
+}
+
+
+
+bin_skewness = function(trials, prob) {
+  check_prob(prob)
+  check_trials(prob)
+  return(aux_skewness(trials, prob))
+}
+
+
+
+bin_kurtosis = function(trials, prob) {
+  check_prob(prob)
+  check_trials(prob)
+  return(aux_kurtosis(trials, prob))
+}
+
+
+

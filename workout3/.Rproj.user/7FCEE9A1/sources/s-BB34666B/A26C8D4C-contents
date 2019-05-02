@@ -1,0 +1,21 @@
+Package: binomial
+Type: Package
+Title: Binomial Distribution
+Version: 0.1.0
+Authors@R: person("Harry", "Dong", email = "hdong920@gmail.com",
+                  role = c("aut", "cre"))
+Description: This package provides functions to easily manipulate and visualize 
+    the binomial distribution. Users can freely explore the different properties
+    of various combinations of parameters.
+Depends: 
+    R (>= 3.1.0)
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    ggplot2,
+    testthat
+RoxygenNote: 6.1.1
+Suggests: 
+    knitr
+VignetteBuilder: knitr

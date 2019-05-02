@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1556648362111.000,
+    "dirty" : false,
+    "encoding" : "ISO8859-1",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "8CF6BD5B",
+    "lastKnownWriteTime" : 1556784957,
+    "last_content_update" : 1556784957899,
+    "path" : "C:/Users/hdong/Desktop/stat133/workout3/workout3/binomial/R/binomial.R",
+    "project_path" : "R/binomial.R",
+    "properties" : {
+        "cursorPosition" : "61,0",
+        "scrollLine" : "39",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

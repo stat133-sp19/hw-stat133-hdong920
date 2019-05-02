@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1556784321539.000,
+    "dirty" : false,
+    "encoding" : "ISO8859-1",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "85942BA0",
+    "lastKnownWriteTime" : 1556653621,
+    "last_content_update" : 1556653621,
+    "path" : "C:/Users/hdong/Desktop/stat133/workout3/workout3/binomial/R/checkers.R",
+    "project_path" : "R/checkers.R",
+    "properties" : {
+        "cursorPosition" : "6,1",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
